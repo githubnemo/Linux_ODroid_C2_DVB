@@ -13,6 +13,7 @@
 #define _MEDIA_VIDEOBUF2_V4L2_H
 
 #include <linux/videodev2.h>
+#include <media/videobuf2-core.h>
 #include <media/videobuf2-v4l2.h>
 
 #if VB2_MAX_FRAME != VIDEO_MAX_FRAME
