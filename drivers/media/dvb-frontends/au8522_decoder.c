@@ -707,7 +707,7 @@ static const struct v4l2_subdev_audio_ops au8522_audio_ops = {
 static const struct v4l2_subdev_video_ops au8522_video_ops = {
 	.s_routing = au8522_s_video_routing,
 	.s_stream = au8522_s_stream,
-	.s_std = au8522_s_std,
+	.s_std_output = au8522_s_std,
 };
 
 static const struct v4l2_subdev_ops au8522_ops = {
