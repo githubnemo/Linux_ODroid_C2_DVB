@@ -431,7 +431,7 @@ int em28xx_init_camera(struct em28xx *dev)
 			break;
 		}
 
-		format.format.code = MEDIA_BUS_FMT_YUYV8_2X8;
+		format.format.code = V4L2_MBUS_FMT_YUYV8_2X8; // MEDIA_BUS_FMT_YUYV8_2X8;
 		format.format.width = 640;
 		format.format.height = 480;
 		v4l2_subdev_call(subdev, pad, set_fmt, NULL, &format);
