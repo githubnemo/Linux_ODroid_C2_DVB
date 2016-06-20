@@ -2,11 +2,11 @@
  * Frontend driver for mobile DVB-T demodulator DiBcom 3000M-B
  * DiBcom (http://www.dibcom.fr/)
  *
- * Copyright (C) 2004-5 Patrick Boettcher (patrick.boettcher@desy.de)
+ * Copyright (C) 2004-5 Patrick Boettcher (patrick.boettcher@posteo.de)
  *
  * based on GPL code from DibCom, which has
  *
- * Copyright (C) 2004 Amaury Demol for DiBcom (ademol@dibcom.fr)
+ * Copyright (C) 2004 Amaury Demol for DiBcom
  *
  *	This program is free software; you can redistribute it and/or
  *	modify it under the terms of the GNU General Public License as
@@ -14,7 +14,7 @@
  *
  * Acknowledgements
  *
- *  Amaury Demol (ademol@dibcom.fr) from DiBcom for providing specs and driver
+ *  Amaury Demol from DiBcom for providing specs and driver
  *  sources, on which this driver (and the dvb-dibusb) are based.
  *
  * see Documentation/dvb/README.dvb-usb for more information
@@ -36,7 +36,7 @@
 /* Version information */
 #define DRIVER_VERSION "0.1"
 #define DRIVER_DESC "DiBcom 3000M-B DVB-T demodulator"
-#define DRIVER_AUTHOR "Patrick Boettcher, patrick.boettcher@desy.de"
+#define DRIVER_AUTHOR "Patrick Boettcher, patrick.boettcher@posteo.de"
 
 static int debug;
 module_param(debug, int, 0644);
@@ -118,7 +118,7 @@ static int dib3000mb_set_frontend(struct dvb_frontend *fe, int tuner)
 {
 	struct dib3000_state* state = fe->demodulator_priv;
 	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
-	fe_code_rate_t fe_cr = FEC_NONE;
+	enum fe_code_rate fe_cr = FEC_NONE;
 	int search_state, seq;
 
 	if (tuner && fe->ops.tuner_ops.set_params) {
@@ -454,7 +454,7 @@ static int dib3000mb_get_frontend(struct dvb_frontend* fe)
 {
 	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
 	struct dib3000_state* state = fe->demodulator_priv;
-	fe_code_rate_t *cr;
+	enum fe_code_rate *cr;
 	u16 tps_val;
 	int inv_test1,inv_test2;
 	u32 dds_val, threshold = 0x800000;
@@ -611,7 +611,8 @@ static int dib3000mb_get_frontend(struct dvb_frontend* fe)
 	return 0;
 }
 
-static int dib3000mb_read_status(struct dvb_frontend* fe, fe_status_t *stat)
+static int dib3000mb_read_status(struct dvb_frontend *fe,
+				 enum fe_status *stat)
 {
 	struct dib3000_state* state = fe->demodulator_priv;
 

@@ -1,7 +1,7 @@
 /*
- * Montage M88TS2022 silicon tuner driver
+ * Driver for the internal tuner of Montage M88RS6000
  *
- * Copyright (C) 2013 Antti Palosaari <crope@iki.fi>
+ * Copyright (C) 2014 Max nibble <nibble.max@gmail.com>
  *
  *    This program is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -14,37 +14,12 @@
  *    GNU General Public License for more details.
  */
 
-#ifndef M88TS2022_H
-#define M88TS2022_H
+#ifndef _M88RS6000T_H_
+#define _M88RS6000T_H_
 
 #include "dvb_frontend.h"
 
-struct m88ts2022_config {
-	/*
-	 * clock
-	 * 16000000 - 32000000
-	 */
-	u32 clock;
-
-	/*
-	 * RF loop-through
-	 */
-	u8 loop_through:1;
-
-	/*
-	 * clock output
-	 */
-#define M88TS2022_CLOCK_OUT_DISABLED        0
-#define M88TS2022_CLOCK_OUT_ENABLED         1
-#define M88TS2022_CLOCK_OUT_ENABLED_XTALOUT 2
-	u8 clock_out:2;
-
-	/*
-	 * clock output divider
-	 * 1 - 31
-	 */
-	u8 clock_out_div:5;
-
+struct m88rs6000t_config {
 	/*
 	 * pointer to DVB frontend
 	 */
