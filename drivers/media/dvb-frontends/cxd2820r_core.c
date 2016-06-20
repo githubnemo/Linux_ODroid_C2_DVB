@@ -606,7 +606,8 @@ static int cxd2820r_i2c_gate_ctrl(struct dvb_frontend *fe, int enable)
 static int cxd2820r_gpio_direction_output(struct gpio_chip *chip, unsigned nr,
 		int val)
 {
-	struct cxd2820r_priv *priv = gpiochip_get_data(chip);
+	struct cxd2820r_priv *priv =
+			container_of(chip, struct cxd2820r_priv, gpio_chip);
 	u8 gpio[GPIO_COUNT];
 
 	dev_dbg(&priv->i2c->dev, "%s: nr=%d val=%d\n", __func__, nr, val);
@@ -619,7 +620,8 @@ static int cxd2820r_gpio_direction_output(struct gpio_chip *chip, unsigned nr,
 
 static void cxd2820r_gpio_set(struct gpio_chip *chip, unsigned nr, int val)
 {
-	struct cxd2820r_priv *priv = gpiochip_get_data(chip);
+	struct cxd2820r_priv *priv =
+			container_of(chip, struct cxd2820r_priv, gpio_chip);
 	u8 gpio[GPIO_COUNT];
 
 	dev_dbg(&priv->i2c->dev, "%s: nr=%d val=%d\n", __func__, nr, val);
@@ -634,8 +636,8 @@ static void cxd2820r_gpio_set(struct gpio_chip *chip, unsigned nr, int val)
 
 static int cxd2820r_gpio_get(struct gpio_chip *chip, unsigned nr)
 {
-	struct cxd2820r_priv *priv = gpiochip_get_data(chip);
-
+	struct cxd2820r_priv *priv =
+			container_of(chip, struct cxd2820r_priv, gpio_chip);
 	dev_dbg(&priv->i2c->dev, "%s: nr=%d\n", __func__, nr);
 
 	return (priv->gpio[nr] >> 2) & 0x01;
