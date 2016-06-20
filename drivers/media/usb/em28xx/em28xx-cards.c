@@ -30,7 +30,6 @@
 #include <linux/i2c.h>
 #include <linux/usb.h>
 #include <media/tuner.h>
-#include <media/drv-intf/msp3400.h>
 #include <media/i2c/saa7115.h>
 #include <media/i2c/tvp5150.h>
 #include <media/i2c/tvaudio.h>
@@ -682,26 +681,6 @@ struct em28xx_board em28xx_boards[] = {
 			.type     = EM28XX_VMUX_SVIDEO,
 			.vmux     = SAA7115_SVIDEO3,
 			.amux     = EM28XX_AMUX_LINE_IN,
-		} },
-	},
-	[EM2820_BOARD_HAUPPAUGE_WINTV_USB_2] = {
-		.name         = "Hauppauge WinTV USB 2",
-		.tuner_type   = TUNER_PHILIPS_FM1236_MK3,
-		.tda9887_conf = TDA9887_PRESENT |
-				TDA9887_PORT1_ACTIVE |
-				TDA9887_PORT2_ACTIVE,
-		.decoder      = EM28XX_TVP5150,
-		.has_msp34xx  = 1,
-		.has_ir_i2c   = 1,
-		.input        = { {
-			.type     = EM28XX_VMUX_TELEVISION,
-			.vmux     = TVP5150_COMPOSITE0,
-			.amux     = MSP_INPUT_DEFAULT,
-		}, {
-			.type     = EM28XX_VMUX_SVIDEO,
-			.vmux     = TVP5150_SVIDEO,
-			.amux     = MSP_INPUT(MSP_IN_SCART1, MSP_IN_TUNER1,
-					MSP_DSP_IN_SCART, MSP_DSP_IN_SCART),
 		} },
 	},
 	[EM2820_BOARD_DLINK_USB_TV] = {
