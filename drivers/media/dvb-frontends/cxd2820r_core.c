@@ -730,7 +730,7 @@ struct dvb_frontend *cxd2820r_attach(const struct cxd2820r_config *cfg,
 		priv->gpio_chip.base = -1; /* dynamic allocation */
 		priv->gpio_chip.ngpio = GPIO_COUNT;
 		priv->gpio_chip.can_sleep = 1;
-		ret = gpiochip_add_data(&priv->gpio_chip, priv);
+		ret = gpiochip_add(&priv->gpio_chip);
 		if (ret)
 			goto error;
 
