@@ -1,5 +1,5 @@
 /*
- * videobuf2-core.c - V4L2 driver helper framework
+ * videobuf2-v4l2.c - V4L2 driver helper framework
  *
  * Copyright (C) 2010 Samsung Electronics
  *
@@ -22,7 +22,7 @@
 #include <media/v4l2-dev.h>
 #include <media/v4l2-fh.h>
 #include <media/v4l2-event.h>
-#include <media/videobuf2-core.h>
+#include <media/videobuf2-v4l2.h>
 
 static int debug;
 module_param(debug, int, 0644);
@@ -2196,7 +2196,7 @@ EXPORT_SYMBOL_GPL(vb2_poll);
  * responsible of clearing it's content and setting initial values for some
  * required entries before calling this function.
  * q->ops, q->mem_ops, q->type and q->io_modes are mandatory. Please refer
- * to the struct vb2_queue description in include/media/videobuf2-core.h
+ * to the struct vb2_queue description in include/media/videobuf2-v4l2.h
  * for more information.
  */
 int vb2_queue_init(struct vb2_queue *q)
